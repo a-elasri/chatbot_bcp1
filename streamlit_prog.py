@@ -15,7 +15,7 @@ import os
 
 # key_2="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"
 # key_2="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"
-key_2="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"
+key_2="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"
 # key_2="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"
 
 os.environ['OPENAI_API_KEY'] = key_2
