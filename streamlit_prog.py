@@ -13,8 +13,9 @@ import streamlit as st
 from streamlit_chat import message
 import os
 
-key_2="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"
+# key_2="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"
 # key_2="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"
+key_2="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"
 
 os.environ['OPENAI_API_KEY'] = key_2
 openai.api_key = os.getenv("OPENAI_API_KEY")
