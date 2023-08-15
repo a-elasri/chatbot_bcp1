@@ -13,13 +13,13 @@ import streamlit as st
 from streamlit_chat import message
 import os
 
-# key_2="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"
-# key_2="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"
-key_2="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"
-# key_2="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"
+from dotenv import load_dotenv
+load_dotenv() 
 
-os.environ['OPENAI_API_KEY'] = key_2
-openai.api_key = os.getenv("OPENAI_API_KEY")
+# key_1=os.getenv("key_openai")
+# os.environ['OPENAI_API_KEY'] = key_1
+
+openai.api_key = os.getenv("key_openai")
 persist_directory = 'persist_directory'
 embeddings=OpenAIEmbeddings(openai_api_key=os.environ['OPENAI_API_KEY'])
 doc_search= Chroma(persist_directory=persist_directory, embedding_function=embeddings)
