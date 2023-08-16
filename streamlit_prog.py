@@ -13,18 +13,30 @@ import streamlit as st
 from streamlit_chat import message
 import os
 
-from dotenv import load_dotenv
-load_dotenv() 
+# openai_api_key = st.secrets["key_openai"]
+print("hellooo:   ")
+print(st.secrets["key_openai"])
 
-key_1=os.getenv("key_openai")
-# os.environ['OPENAI_API_KEY'] = key_1
-os.environ["OPENAI_API_KEY"] == st.secrets["key_openai"],
-
+key_2=st.secrets["key_openai"]
+os.environ['OPENAI_API_KEY'] = key_2
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 persist_directory = 'persist_directory'
 embeddings=OpenAIEmbeddings(openai_api_key=os.environ['OPENAI_API_KEY'])
-doc_search= Chroma(persist_directory=persist_directory, embedding_function=embeddings)
-chain=ConversationalRetrievalChain.from_llm(llm=OpenAI(model_name="gpt-3.5-turbo"),chain_type="stuff",retriever=doc_search.as_retriever(), return_source_documents=True) 
+doc_search = Chroma(persist_directory=persist_directory, embedding_function=embeddings)
+chain = ConversationalRetrievalChain.from_llm(llm=OpenAI(model_name="gpt-3.5-turbo"), chain_type="stuff", retriever=doc_search.as_retriever(), return_source_documents=True)
+
+# from dotenv import load_dotenv
+# load_dotenv() 
+
+# key_1=os.getenv("key_openai")
+# os.environ['OPENAI_API_KEY'] = key_1
+# os.environ["OPENAI_API_KEY"] == st.secrets["key_openai"],
+
+# persist_directory = 'persist_directory'
+# embeddings=OpenAIEmbeddings(openai_api_key=os.environ['OPENAI_API_KEY'])
+# doc_search= Chroma(persist_directory=persist_directory, embedding_function=embeddings)
+# chain=ConversationalRetrievalChain.from_llm(llm=OpenAI(model_name="gpt-3.5-turbo"),chain_type="stuff",retriever=doc_search.as_retriever(), return_source_documents=True) 
 
 def generate_response(prompt):
     chatHistory=[]
