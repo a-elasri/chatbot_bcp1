@@ -16,10 +16,11 @@ import os
 from dotenv import load_dotenv
 load_dotenv() 
 
-# key_1=os.getenv("key_openai")
+key_1=os.getenv("key_openai")
 # os.environ['OPENAI_API_KEY'] = key_1
+os.environ["OPENAI_API_KEY"] == st.secrets["key_openai"],
 
-openai.api_key = os.getenv("key_openai")
+
 persist_directory = 'persist_directory'
 embeddings=OpenAIEmbeddings(openai_api_key=os.environ['OPENAI_API_KEY'])
 doc_search= Chroma(persist_directory=persist_directory, embedding_function=embeddings)
